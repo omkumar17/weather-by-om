@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+body{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    height:100vh;
+}
+
+.place{
+    /* background-color: rgba(124, 255, 1, 0.175); */
+    color:rgb(3, 255, 62);
+    font-size:20px;
+    float:right;
+    /* margin: 5px; */
+    padding: 8px;
+    margin-top: 20px;
+    border:2px solid black;
+    border-radius: 15px;
+    background: #00000086;
+
+}
+.unit{
+    text-transform: none;
+}
+
+.navigation {
+    height: 7vh;
+}
+
+.navbar {
+    height: 100%;
+}
+
+.outerbody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color :grey; */
+    height: 100%;
+    width: 100%;
+
+}
+
+.popularcities {
+    /* width:100%; */
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    align-items: center;
+    /* justify-content: center; */
+    scroll-behavior: smooth;
+    /* margin: 20px; */
+    padding: 10px 5px;
+
+}
+
+.popularcities::-webkit-scrollbar {
+    width: 2px;
+    /* Adjust the width of the scrollbar */
+    height: 0px;
+    /* Adjust the height of the scrollbar */
+}
+
+/* Style the scrollbar thumb (the part that can be dragged) */
+.popularcities::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Change to desired color */
+    border-radius: 10px;
+}
+
+/* Style the scrollbar track (the empty part of the scrollbar) */
+.popularcities::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Change to desired color */
+}
+
+.popularcities::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+
+.expanded {
+    display:flex;
+    flex-direction:row;
+    width: 370px;
+    height: 320px;
+    position: absolute;
+    top: calc(40vh);
+    left:calc(100vw-370px);
+    margin:auto;
+    z-index: 10;
+    border: 5px solid rgba(50, 50, 50, 0.574);
+    border-radius: 10px;
+    box-shadow: 10px 10px 25px rgb(9, 0, 0);
+    transform:scale(1,1);
+
+    /* transition: all 0.5s ;
+     */
+     /* transition: all 0.1s linear; */
+    }
+    
+    
+    .weather .collapsed {
+        /* transform:scale(1,1); */
+        max-width: 10rem;
+        min-width: 10rem;
+        height:10rem;
+        /* transition: all 1s linear; */
+    /* height:10rem; */
+    /* or specify the original width */
+}
+
+.addcities {
+    color: blue;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid blue;
+    box-shadow: 0 0 2px blue;
+}
+
+.addcities:hover {
+    color: white;
+    background-color: blue;
+}
+
+
+.maincard {
+    justify-content: center;
+    /* width: 50%; */
+    padding: 30px 0;
+}
+.maincard .subcardtop,.maincard .subcardbottom{
+    padding: 0 10px;
+}
+
+.leftcard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+    margin: 30px 0px 30px 10px;
+    padding: 10px;
+    /* border */
+}
+
+.rightcard {
+    /* border-left: 5px solid rgb(199, 199, 199); */
+    height: 100%;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 10px;
+    flex-direction: column;
+}
+
+
+.maincontainer {
+    padding: 0;
+    display: flex;
+    width: 78%;
+    height: 90%;
+    /* border:2px solid black; */
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0.2px 0.2px 40px black;
+
+}
+
+.leftsection,
+.rightsection {
+    padding: 0 20px;
+    border-radius: 30px;
+}
+
+.leftsection {
+
+    background-color: #090909;
+    background-image: url('public/image/right-section-back.jpg');
+    width: 63%;
+    opacity: 0.9;
+    background-position: center;
+    background-size: cover;
+
+    /* background-color: aquamarine; */
+}
+
+.rightsection {
+    /* border-radius:-30px 30px 30px -30px; */
+    width: 37%;
+    background-color: white;
+}
+
+#searchform {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todayweather {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 20px 20px 10px;
+    box-shadow: 0.3px 0.3px 18px rgb(181, 181, 181);
+    border-radius: 20px;
+    
+}
+.todaycontainer,.topcardcontainer{
+    border-radius: 20px;
+
+}
+
+.todayweather .card {
+    margin: 0;
+}
+.todaycontainer{
+    padding: 0;
+}
+
+.card {
+    margin-right: 10px;
+
+}
+
+.subpoints {
+    font-size: 14px;
+    line-height: 23px;
+    font-weight: 600;
+    opacity:0.8;
+}
+
+.subcardtop,
+.subcardbottom {
+    width: 100%;
+}
+
+.temp ,.expanded .leftcard .temp{
+    font-size: 45px;
+    line-height: 0px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.subtitle1, .expanded .leftcard .subtitle1 {
+    width: 100%;
+    font-size: 20px;
+    line-height: 16px;
+    margin: 0;
+    display:block;
+    width:70%;
+}
+.expanded .leftcard .subtitle1, .maincard .subtitle1{
+    /* text-wrap: nowrap; */
+    /* overflow:hidden; */
+    width:80%;
+    margin-bottom:10px;
+    line-height: 30px;
+    
+}
+.maincard .subtitle1{
+    line-height: 20px;
+}
+.subcontainer{
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.date ,.expanded .leftcard .date {
+    width: 100%;
+    line-height: 2px;  
+    font-size: 12px;
+    font-weight: 600;
+}
+.maincard .date{
+    line-height: 0px;  
+    font-size: 10px;
+}
+
+.subcardbottom ,.expanded .leftcard .subcardbottom{
+    /* font-size: 25px; */
+    margin-top: 20px;
+}
+
+.topcardcontainer {
+    width: 100%;
+    height: 35vh;
+    margin-top: 20px;
+    /* box-sizing: border-box; */
+    /* padding: 10px; */
+    border: none;
+}
+
+.degree-celcius {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 0;
+}
+
+.popularcities,
+.maincard {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.popularcities .leftcard {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border: none;
+}
+
+.popularcities .rightcard {
+    display: none;
+}
+
+
+.popularcities .temp {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 25px;
+}
+
+.popularcities .subtitle1 {
+    font-size: 15px;
+}
+
+.popularcities .date {
+    font-size: 10px;
+}
+
+.popularcities .degree-celcius {
+    font-size: 25px;
+}
+
+.popularcities .subcardbottom {
+    /* font-size: 25px; */
+    margin-top: 20px;
+}
+
+.popularcities .card {
+    box-shadow: 0.1px 0.1px 5px rgb(181, 181, 181);
+    border-radius: 15px;
+    
+}
+
+.points{
+    padding-left: 1rem;
+    height:80%;
+    border-left: 5px solid rgb(199, 199, 199);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+.subpoints {
+    list-style: none;
+}
+
+.headingmain {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    margin: 5px;
+    padding: 5px;
+    font-weight: 800;
+
+}
+
+.expanded .leftcard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 45%;
+    height: 100%;
+    margin: 30px 0px 30px 10px;
+    padding: 10px;
+}
+.expanded .rightcard{
+    /* border-left: 5px solid rgb(199, 199, 199); */
+    height: 100%;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 10px;
+    flex-direction: column;
+}
+
+#inputcity {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* opacity:0.5; */
+    border: 3px solid rgb(254, 254, 254);
+    color: white;
+    margin: 30px 0;
+}
+
+#inputcity::placeholder {
+    color: white;
+}
+
+#submit {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* opacity:0.5; */
+    border: 3px solid rgb(254, 254, 254);
+    color: white;
+}
+
+#submit::placeholder {
+    color: white;
+}
+
+#submit:hover {
+    background-color: rgb(2, 170, 2);
+}
+
+.card {
+    cursor: pointer;
+}
