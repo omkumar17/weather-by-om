@@ -10,19 +10,33 @@ body{
     align-items:center;
     flex-direction:column;
     height:100vh;
+    overflow-y: scroll;
+}
+.logocontainer{
+    position:absolute;
+    top:0;
+    left:10px;
+
+}
+.logo{
+    height:100px;
+    width:100px;
+    /* background-color: rgb(230, 230, 230); */
+    /* background-color: rgb(1, 1, 66); */
+    
 }
 
 .place{
     /* background-color: rgba(124, 255, 1, 0.175); */
-    color:rgb(3, 255, 62);
+    color:rgb(192, 3, 255);
     font-size:20px;
     float:right;
     /* margin: 5px; */
     padding: 8px;
     margin-top: 20px;
-    border:2px solid black;
+    border:2px solid rgb(192, 3, 255);
     border-radius: 15px;
-    background: #00000086;
+    background: #fffefe86;
 
 }
 .unit{
@@ -44,6 +58,8 @@ body{
     /* background-color :grey; */
     height: 100%;
     width: 100%;
+    overflow-y: scroll;
+    overflow-x:hidden
 
 }
 
@@ -104,6 +120,9 @@ body{
     /* transition: all 0.5s ;
      */
      /* transition: all 0.1s linear; */
+    }
+    .weather{
+        margin-bottom: 50px;
     }
     
     
@@ -266,7 +285,7 @@ body{
 .expanded .leftcard .subtitle1, .maincard .subtitle1{
     /* text-wrap: nowrap; */
     /* overflow:hidden; */
-    width:80%;
+    width:100%;
     margin-bottom:10px;
     line-height: 30px;
     
@@ -444,10 +463,19 @@ body{
 @media only screen and (max-width:1100px){
     .maincontainer{
         width:50%;
+        height:100%;
         flex-direction: column;
     }
     .rightsection,.leftsection{
         width:100%;
+        height:100%;
+    }
+    .rightsection{
+        margin-bottom: 30px;
+    }
+    .expanded{
+        width:45%;
+        height:30%;
     }
 }
 @media only screen and (max-width:1000px){
@@ -459,9 +487,20 @@ body{
         width:70%;
         margin: 20px;
     }
+    .rightsection{
+        height:100%;
+    }
+    .expanded{
+        top:37%;
+        width:60%;
+        height:35%;
+    }
 }
 @media only screen and (max-width:586px){
-    
+    .logocontainer{
+        position: static;
+        margin: 0;
+    }
     .outerbody{
         padding: 0;
     }
@@ -469,6 +508,13 @@ body{
         width:100%;
         /* margin: 20px; */
     }
+    .expanded{
+        top:37%;
+        left:5%;
+        width:90%;
+        height:35%;
+    }
+    
 }
 @media only screen and (max-width:400px){
     

@@ -67,7 +67,7 @@ moredetail.forEach(button => {
             elementSecondleft.style.width = '45%';
             elementSecondright.style.width = '55%';
             elementSecondright.style.display = 'flex';
-            elementSecondright.style.alignItems = "center";
+            // elementSecondright.style.alignItems = "center";
             // elementSecondright.style.justifyContent="center";
 
             console.log(elementsToBlur);
@@ -93,7 +93,7 @@ const API_KEY = `32d7faba80dbf817e472ed420c770796`;
 var city = document.querySelector("#inputcity");
 var search = document.querySelector("#submit");
 
-const getWeatherDetails = (cityName, lat, lon ) => {
+const getWeatherDetails = (cityName, lat, lon) => {
     const GET_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     fetch(GET_WEATHER_API).then(response => response.json()).then(data => {
         console.log(data);
@@ -132,8 +132,9 @@ const getWeatherDetails = (cityName, lat, lon ) => {
             const month = todaydate.toLocaleString('default', { month: 'long' });
             const year = todaydate.getFullYear();
             const weekday = todaydate.toLocaleString('default', { weekday: 'long' });
-
-            const formattedDate = `${day} ${month}, ${year} ${weekday}`;
+            const hours = todaydate.getHours().toString().padStart(2, '0');
+            const minutes = todaydate.getMinutes().toString().padStart(2, '0');
+            const formattedDate = `${day} ${month}, ${year} ${weekday} ${hours}:${minutes}`;
             // console.log(formattedDate);
 
             subcard[j].querySelector(".date").innerHTML = `${formattedDate}`;
@@ -143,7 +144,7 @@ const getWeatherDetails = (cityName, lat, lon ) => {
                 weather = weather + forecast.weather[i].description + "/";
             }
             weather = weather.substring(0, weather.length - 1);
-            document.querySelector(".maincard .date").innerHTML = `${formattedDate}`;
+            // document.querySelector(".maincard .date").innerHTML = `${formattedDate}`;
             let weathermain = '';
             if (j == 0) {
                 for (var i = 0; i < forecast.weather.length; i++) {
@@ -201,14 +202,19 @@ const getCityCoordinate = (city) => {
         document.querySelector(".maincard .windspeed").innerHTML = Math.round(data.wind.speed);
         document.querySelector(".maincard .pressure").innerHTML = Math.round(data.main.pressure);
         var todaydate = new Date(data.dt * 1000);
+        console.log(todaydate);
         // const todaydate = new Date();
 
         const day = todaydate.getDate().toString().padStart(2, '0');
         const month = todaydate.toLocaleString('default', { month: 'long' });
         const year = todaydate.getFullYear();
         const weekday = todaydate.toLocaleString('default', { weekday: 'long' });
+        const hours = todaydate.getHours().toString().padStart(2, '0');
+        const minutes1 = todaydate.getMinutes().toString().padStart(2, '0');
+        const formattedDate = `${day} ${month}, ${year} ${weekday} ${hours}:${minutes1}`;
 
-        const formattedDate = `${day} ${month}, ${year} ${weekday}`;
+        // const formattedDate = `${day} ${month}, ${year} ${weekday}`;
+        console.log(formattedDate);
         // console.log(formattedDate);
 
         document.querySelector(".maincard .date").innerHTML = `${formattedDate}`;
@@ -230,7 +236,7 @@ const getCityCoordinate = (city) => {
         // document.querySelector(".maincard h5").innerHTML = Math.round(data.main.temp);
         // document.querySelector(".maincard h5").innerHTML = Math.round(data.main.temp);
 
-        getWeatherDetails(name, lat, lon );
+        getWeatherDetails(name, lat, lon);
     }).catch((error) => {
         alert("error:" + error);
     });
