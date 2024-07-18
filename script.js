@@ -93,7 +93,7 @@ const API_KEY = `32d7faba80dbf817e472ed420c770796`;
 var city = document.querySelector("#inputcity");
 var search = document.querySelector("#submit");
 
-const getWeatherDetails = (cityName, lat, lon) => {
+const getWeatherDetails = (cityName, lat, lon ) => {
     const GET_WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
     fetch(GET_WEATHER_API).then(response => response.json()).then(data => {
         console.log(data);
@@ -102,14 +102,16 @@ const getWeatherDetails = (cityName, lat, lon) => {
             return;
         }
         const uniqueDateForecast = [];
-        const todaysDate=new Date(data.dt*1000).getDate();
+        const todaysDate = new Date(data.dt * 1000).getDate();
         const forecastResult = data.list.filter(forecast => {
-            const dateForecast = new Date(forecast.dt*1000).getDate();
-            if (!uniqueDateForecast.includes(dateForecast) && dateForecast!=todaysDate) {
-                return uniqueDateForecast.push(dateForecast);
+            const dateForecast = new Date(forecast.dt * 1000).getDate();
+            if (!uniqueDateForecast.includes(dateForecast)) {
+                uniqueDateForecast.push(dateForecast);
+                return true; // Ensures the current forecast is included in the filtered results
             }
-
+            return false; // Ensures the current forecast is excluded from the filtered results
         });
+
         let subcard = document.querySelectorAll(".subcard");
         var j = 0;
         console.log(forecastResult);
@@ -141,7 +143,18 @@ const getWeatherDetails = (cityName, lat, lon) => {
                 weather = weather + forecast.weather[i].description + "/";
             }
             weather = weather.substring(0, weather.length - 1);
-            console.log("Weather" + weather);
+            document.querySelector(".maincard .date").innerHTML = `${formattedDate}`;
+            let weathermain = '';
+            if (j == 0) {
+                for (var i = 0; i < forecast.weather.length; i++) {
+                    weathermain = weathermain + forecast.weather[i].description + "/";
+                }
+                weathermain = weathermain.substring(0, weathermain.length - 1);
+                // weather =data.weather[0].description;
+                document.querySelector(".maincard .subtitle1").innerHTML = weathermain;
+                console.log("Weather" + weathermain);
+                // document.querySelector(".maincard .subtitle1").innerHTML = weathermain;
+            }
             // weather =data.weather[0].description;
             subcard[j].querySelector(".subtitle1").innerHTML = weather;
             // var date = new Date(forecast.sys.sunrise * 1000);
@@ -199,13 +212,13 @@ const getCityCoordinate = (city) => {
         // console.log(formattedDate);
 
         document.querySelector(".maincard .date").innerHTML = `${formattedDate}`;
-        let weather = '';
-        for (var i = 0; i < data.weather.length; i++) {
-            weather = weather + data.weather[i].description + "/";
-        }
-        weather = weather.substring(0, weather.length - 1);
-        // weather =data.weather[0].description;
-        document.querySelector(".maincard .subtitle1").innerHTML = weather;
+        // let weather = '';
+        // for (var i = 0; i < data.weather.length; i++) {
+        //     weather = weather + data.weather[i].description + "/";
+        // }
+        // weather = weather.substring(0, weather.length - 1);
+        // // weather =data.weather[0].description;
+        // document.querySelector(".maincard .subtitle1").innerHTML = weather;
         var date = new Date(data.sys.sunrise * 1000);
         var hour = date.getHours().toString().padStart(2, '0');
         var minutes = date.getMinutes().toString().padStart(2, '0');
@@ -217,7 +230,7 @@ const getCityCoordinate = (city) => {
         // document.querySelector(".maincard h5").innerHTML = Math.round(data.main.temp);
         // document.querySelector(".maincard h5").innerHTML = Math.round(data.main.temp);
 
-        getWeatherDetails(name, lat, lon);
+        getWeatherDetails(name, lat, lon );
     }).catch((error) => {
         alert("error:" + error);
     });

@@ -435,3 +435,54 @@ body{
 .card {
     cursor: pointer;
 }
+@media only screen and (max-width:1400px){
+    
+    .rightsection{
+        width:48%;
+    }
+}
+@media only screen and (max-width:1100px){
+    .maincontainer{
+        width:50%;
+        flex-direction: column;
+    }
+    .rightsection,.leftsection{
+        width:100%;
+    }
+}
+@media only screen and (max-width:1000px){
+    
+    .outerbody{
+        padding: 0;
+    }
+    .maincontainer{
+        width:70%;
+        margin: 20px;
+    }
+}
+@media only screen and (max-width:586px){
+    
+    .outerbody{
+        padding: 0;
+    }
+    .maincontainer{
+        width:100%;
+        /* margin: 20px; */
+    }
+}
+@media only screen and (max-width:400px){
+    
+    .outerbody{
+        padding: 0;
+    }
+    .maincontainer{
+        width:100%;
+        /* margin: 20px; */
+    }
+    .rightsection{
+        padding: 0;
+    }
+    .todayweather{
+        margin: 20px;
+    }
+}
